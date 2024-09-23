@@ -26,19 +26,22 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
         expiration_time = datetime.now() + timedelta(minutes=15)
 
         # Generate the join link for the specified group
-        link = await Bot.create_chat_invite_link(
+        link = await client.create_chat_invite_link(
             group_id,
             expire_date=expiration_time,
             creates_join_request=True
         )
 
-        # Send the link to the user
-        await Bot.send_message(query.message.chat.id, f"Join link (valid for 3 minutes): {link.invite_link}")
+        # Send the link to the user using reply_text
+        await query.message.reply_text(f"Join link (valid for 3 minutes): {link.invite_link}")
 
-        # Wait for 15 minutes before revoking the link
-        await asyncio.sleep(180)  # 15 minutes
-        await Bot.revoke_chat_invite_link(group_id, link.invite_link)
-        await Bot.send_message(query.message.chat.id, "The join link has expired.")
+        # Wait for 3 minutes before revoking the link
+        await asyncio.sleep(180)  # 3 minutes (you mentioned 3 minutes in the message, not 15)
+        await client.revoke_chat_invite_link(group_id, link.invite_link)
+        
+        # Inform the user that the link has expired
+        await query.message.reply_text("The join link has expired.")
 
     except Exception as e:
-        await Bot.send_message(query.message.chat.id, f"Sorry, I was unable to generate the join link. Error: {str(e)}")
+        # Send the error message using reply_text
+        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Error: {str(e)}")
