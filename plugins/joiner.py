@@ -27,14 +27,14 @@ GROUPS = {
 
 
 @Bot.on_message(filters.command('join') & filters.private, group=89897)
-async def join_command(bot, message):
+async def join_command(bot: Bot, message: Message):
     # Create inline buttons for each group, ensuring callback_data is a string
     buttons = [
         [InlineKeyboardButton(group_name, callback_data=str(group_id))] for group_name, group_id in GROUPS.items()
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_message(
+    await message.reply_text(
         message.chat.id,
         "Choose a group to join:",
         reply_markup=reply_markup
