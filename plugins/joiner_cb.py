@@ -1,7 +1,7 @@
 import json
 import time
 import asyncio
-import requests
+
 import subprocess
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
@@ -20,7 +20,7 @@ from config import OWNER_ID
 
 
 @Bot.on_callback_query(group=77687)
-async def handle_callback_query(bot, callback_query: CallbackQuery):
+async def handle_callback_query(client: Bot, query: CallbackQuery):
     group_id = int(callback_query.data)  # Convert group_id back to int
     try:
         expiration_time = datetime.now() + timedelta(minutes=15)
