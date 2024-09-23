@@ -4,8 +4,7 @@ import sys
 import json
 import time
 import asyncio
-import requests
-import subprocess
+
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
