@@ -19,7 +19,7 @@ from pyrogram.types.messages_and_media import message
 
 
 GROUPS = {
-    "Group 1": -1001506454180,  # Replace with your actual group IDs
+    "MASTER PRO 1 HINDI": -1002175178138,  # Replace with your actual group IDs
     "Group 2": -1001814803421,  # Replace with your actual group IDs
     "Group 3": -1009876543210   # Replace with your actual group IDs
 }
@@ -34,7 +34,6 @@ async def join_command(bot: Bot, message: Message):
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await message.reply_text(
-        message.chat.id,
         "Choose a group to join:",
         reply_markup=reply_markup
     )
