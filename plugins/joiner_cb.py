@@ -33,7 +33,7 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
         )
 
         # Send the link to the user using reply_text
-        await query.message.reply_text(f"Here is Joining link (valid for only 3 minutes): [Click Here To Join]({link.invite_link})" , disable_web_page_preview = True , protect_content=True, )
+        await query.message.reply_text(f"Here is Joining link (valid for only 3 minutes): [Click Here To Join]({link.invite_link})" , disable_web_page_preview = True , protect_content=True, parse_mode=ParseMode.MARKDOWN )
 
         # Wait for 3 minutes before revoking the link
         await asyncio.sleep(180)  # 3 minutes (you mentioned 3 minutes in the message, not 15)
