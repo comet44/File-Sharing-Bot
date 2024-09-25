@@ -19,9 +19,9 @@ from pyrogram.types.messages_and_media import message
 
 
 GROUPS = {
-    "MASTER PRO 1 HINDI": -1002100102965,  # Replace with your actual group IDs
-    "Group 2": -1001814803421,  # Replace with your actual group IDs
-    "Group 3": -1009876543210   # Replace with your actual group IDs
+    "MP 1 HINDI": -1002175178138,  # Replace with your actual group IDs
+    "KUNHARI CRASH": -1002007781807,  # Replace with your actual group IDs
+    "PENDING": -1009876543210,  # Replace with your actual group IDs
 }
 
 
@@ -35,6 +35,7 @@ async def join_command(bot: Bot, message: Message):
     
     await message.reply_text(
         "Choose a group to join:",
-        reply_markup=reply_markup
+        reply_markup=reply_markup,
+        protect_content=True,
     )
 
