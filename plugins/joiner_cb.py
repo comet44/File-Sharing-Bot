@@ -33,7 +33,7 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
         )
 
         # Send the link to the user using reply_text
-        await query.message.reply_text(f"Here is Joining link (valid for 3 minutes): {link.invite_link}")
+        await query.message.reply_text(f"Here is Joining link (valid for only 3 minutes): [Click Here To Join]({link.invite_link})" , disable_web_page_preview = True , protect_content=True, )
 
         # Wait for 3 minutes before revoking the link
         await asyncio.sleep(180)  # 3 minutes (you mentioned 3 minutes in the message, not 15)
@@ -44,4 +44,4 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
 
     except Exception as e:
         # Send the error message using reply_text
-        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Error: {str(e)}")
+        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Please Try Again Later")
