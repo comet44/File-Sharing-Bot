@@ -45,4 +45,4 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
 
     except Exception as e:
         # Send the error message using reply_text
-        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Please Try Again Later")
+        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Please Try Again Later \n\n Error: {str(e)}")
