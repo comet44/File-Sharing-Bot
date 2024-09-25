@@ -33,10 +33,10 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
         )
 
         # Send the link to the user using reply_text
-        deca= await query.message.reply_text(f"<b>🍃 Here is Joining link (valid for only 3 minutes)</b>: <a href='{link.invite_link}'>Click Here To Join</a>)" , disable_web_page_preview = True , protect_content=True, )
+        deca= await query.message.reply_text(f"<b>🍃 Here is Joining link (valid for only 10 minutes)</b>: <a href='{link.invite_link}'>Click Here To Join</a>)" , disable_web_page_preview = True , protect_content=True, )
 
         # Wait for 3 minutes before revoking the link
-        await asyncio.sleep(180)  # 3 minutes (you mentioned 3 minutes in the message, not 15)
+        await asyncio.sleep(600)  # 3 minutes (you mentioned 3 minutes in the message, not 15)
         await client.revoke_chat_invite_link(group_id, link.invite_link)
         await deca.delete()
         
@@ -45,4 +45,4 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
 
     except Exception as e:
         # Send the error message using reply_text
-        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Please Try Again Later \n\n Error: {str(e)}")
+        await query.message.reply_text(f"Sorry, I was unable to generate the join link. Please Try Again Later")
