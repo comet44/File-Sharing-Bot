@@ -19,7 +19,7 @@ from pyrogram.types.messages_and_media import message
 
 
 GROUPS = {
-    "MASTER PRO 1 HINDI": -1002117691442,  # Replace with your actual group IDs
+    "MASTER PRO 1 HINDI": -1002100102965,  # Replace with your actual group IDs
     "Group 2": -1001814803421,  # Replace with your actual group IDs
     "Group 3": -1009876543210   # Replace with your actual group IDs
 }
