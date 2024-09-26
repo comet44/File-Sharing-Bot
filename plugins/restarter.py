@@ -9,6 +9,7 @@ GROUPS = {
     "MP 1 HINDI": -1002175178138,
     "KUNHARI CRASH": -1002007781807,
     "KOTA CQ 1": -1002202198119,
+}
 
 @Bot.on_start()
 async def on_start(bot: Bot):
