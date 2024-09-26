@@ -25,7 +25,7 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
     try:
         expiration_time = datetime.now() + timedelta(minutes=15)
 
-        await asyncio.sleep(5)  # Wait 5 seconds before fetching group info
+          # Wait 5 seconds before fetching group info
         chat = await client.get_chat(group_id) 
         member = await client.get_chat_member(group_id, client.me.id)# Refresh group info after delay
 
