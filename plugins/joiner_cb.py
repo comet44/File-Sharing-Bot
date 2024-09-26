@@ -33,10 +33,10 @@ async def handle_callback_query(bot, callback_query: CallbackQuery):
         )
 
         # Send the link to the user
-        await Bot.send_message(callback_query.message.chat.id, f"Join link (valid for 3 minutes): {link.invite_link}")
+        await Bot.send_message(callback_query.message.chat.id, f"Join link (valid for 15 seconds): {link.invite_link}")
 
         # Wait for 15 minutes before revoking the link
-        await asyncio.sleep(180)  # 15 minutes
+        await asyncio.sleep(15)  # 15 minutes
         await Bot.revoke_chat_invite_link(group_id, link.invite_link)
         await Bot.send_message(callback_query.message.chat.id, "The join link has expired.")
 
