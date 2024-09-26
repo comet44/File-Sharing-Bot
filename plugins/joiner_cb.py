@@ -23,8 +23,12 @@ from config import OWNER_ID
 async def handle_callback_query(client: Bot, query: CallbackQuery):
     group_id = int(query.data)  # Convert group_id back to int
     try:
-        chat = await client.get_chat(group_id)
         expiration_time = datetime.now() + timedelta(minutes=15)
+
+        await asyncio.sleep(5)  # Wait 5 seconds before fetching group info
+        chat = await client.get_chat(group_id) 
+        member = await client.get_chat_member(group_id, client.me.id)# Refresh group info after delay
+
 
         # Generate the join link for the specified group
         link = await client.create_chat_invite_link(
