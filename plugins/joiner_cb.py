@@ -21,7 +21,10 @@ from config import OWNER_ID
 
 @Bot.on_callback_query(group=77687)
 async def handle_callback_query(client: Bot, query: CallbackQuery):
-    group_id = int(query.data)  # Convert group_id back to int
+    if not query.data.startswith('group_'):
+        return  # Ignore non-group callback queries
+    
+    group_id = int(query.data.split('_')[1])    # Convert group_id back to int
     try:
         expiration_time = datetime.now() + timedelta(minutes=15)
 
