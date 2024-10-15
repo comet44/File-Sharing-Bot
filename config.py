@@ -18,6 +18,8 @@ APP_ID = int(os.environ.get("APP_ID", ""))
 #Your API Hash from my.telegram.org
 API_HASH = os.environ.get("API_HASH", "")
 
+PICS = ('https://te.legra.ph/file/78a556d78bd5bc7daafa4.jpg')
+
 #Your db channel Id
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 
