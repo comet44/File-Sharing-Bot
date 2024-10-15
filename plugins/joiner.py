@@ -29,7 +29,7 @@ GROUPS = {
 async def join_command(bot: Bot, message: Message):
     # Create inline buttons for each group, ensuring callback_data is a string
     buttons = [
-        [InlineKeyboardButton(group_name, callback_data=str(group_id))] for group_name, group_id in GROUPS.items()
+        [InlineKeyboardButton(group_name, callback_data=f"group_{group_id}")] for group_name, group_id in GROUPS.items()
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
     
