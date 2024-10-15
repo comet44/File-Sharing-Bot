@@ -1,0 +1,230 @@
+
+import os
+import asyncio
+from pyrogram import Client, filters
+from pyrogram.enums import ParseMode
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from bot import Bot
+from helper_func import subscribed, encode, decode, get_messages
+from pyrogram import __version__
+from config import OWNER_ID, BOT_USERNM
+
+
+@Bot.on_callback_query(group=162)
+async def bot_nots(client: Bot, query: CallbackQuery):
+    data = query.data
+    biu_info = [] 
+    if data == "un_bio":
+      biu_info = [
+        f'''  🔮 **CLASS 11 BIOLOGY UNACADEMY**
+        
+🌱**[LIVING WORLD ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE3Nzc0MjYwMTg2NjcyMTYtMTc4MDQzMTgxMjM4NTM2OA)**
+
+🌱**[LIVING WORLD ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwMDY4NjgyNzI0ODYxNTItMjAxMDg3NTk5NzQ0MzY4OA)**
+
+
+🌱**[BIOLOGICAL CLASSIFICATION ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE3ODE0MzM3NDM2MjQ3NTItMTc4NzQ0NTMzMTA2MTA1Ng)**
+
+🌱**[BIOLOGICAL CLASSIFICATION ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwMTE4Nzc5Mjg2ODMwNzItMjAyNTkwNDk2NjAzNDQ0OA)**
+
+🌱 **[LIVING WORLD & BIOLOGICAL CLASSIFICATION ✘ IA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNTY3MjIzNTM1NTkzNTEyLTEyNTc2MjQwOTE2NzQ3OTY4)**
+
+
+
+🌱**[PLANT KINGDOM ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE3ODg0NDcyNjIzMDA0NDAtMTgwMTQ3MjM2ODQxMjQzMg)**
+
+🌱**[PLANT KINGDOM ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwMjY5MDY4OTcyNzM4MzItMjAzMzkyMDQxNTk0OTUyMA)**
+
+🌱**[PLANT KINGDOM ✘ IA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNTc3MjQyODQ3OTg3MzUyLTEyNTgwMjQ4NjQxNzA1NTA0)**
+
+
+🌱**[ANIMAL KINGDOM ✘ MKS 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExNTU2Mjc0OTE1MDU1MDU2LTExNTczMzA3NzQ2MTI0NTg0)**
+
+🌱**[ANIMAL KINGDOM ✘ MKS HINDI 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExOTIzOTgzNjc5OTA4OTg0LTExOTQyMDE4NDQyMjE3ODk2)**
+
+🌱**[ANIMAL KINGDOM ✘ NKY SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNTk5Mjg1MzM1MjUzODAwLTEyNjE3MzIwMDk3NTYyNzEy)**
+
+🌱**[ANIMAL DIVERSITY DR PARVEZ BABAR SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNzcyNjE5NDM5NjY3MjMyLTEyODA1NjgzMTcwNTY2OTA0)**
+
+🌱 **[ANIMAL DIVERSITY ✘ DSP SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMzUxNzM1Njk2MDMxMTg0LTEzMzYxNzU1MDA4NDI1MDI0)**
+
+
+🌱**[PLANT PHYSIO 025 ✘ JS SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTc3NzQ5ODY0MTc2MTk4NC04MDE1NDQ5OTE1MDcyMDA)**
+
+🌱 **[PLANT PHYSIOLOGY ✘ AKS SIR CC2 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMjQwNTIxMzI4NDU5NTYwLTEzMjU4NTU2MDkwNzY4NDcy)**
+
+🌱 **[PLANT PHYSIOLOGY ✘ AKS SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMDk3MjQ1MTYxMjI3NjQ4LTEzMTE1Mjc5OTIzNTM2NTYw)**
+
+
+🌱**[MORPHOLOGY ✘ BAIBHAV SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE4MDI0NzQyOTk2NTE4MTYtMTgxMjQ5MzYxMjA0NTY1Ng)** 
+
+🌱**[MORPHOLOGY ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwMzU5MjQyNzg0MjgyODgtMjA0MjkzNzc5NzEwMzk3Ng)** 
+
+🌱**[MORPHOLOGY ✘ FAZIL KHAN 2025 ](https://t.me/{BOT_USERNM}?start=Z2V0LTEzNjA2MjI2MjMwODM0NzIwLTEzNjE1MjQzNjExOTg5MTc2)**
+
+
+
+🌱**[ANATOMY ✘ BAIBHAV SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE4MTM0OTU1NDMyODUwNDAtMTgyNDUxNjc4NjkxODI2NA)**
+
+🌱**[ANATOMY ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwNDU5NDM1OTA4MjIxMjgtMjA1MTk1NTE3ODI1ODQzMg)**
+
+
+🌱**[CELL : UNIT OF LIFE ✘ BAIBHAV SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE4NTg1ODI0NDkwNTczMjAtMTg2NTU5NTk2NzczMzAwOA)**
+
+🌱**[CELL : UNIT OF LIFE ✘ SN SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTIwNTU5NjI5MDMyMTU5NjgtMjA2NDk4MDI4NDM3MDQyNA)**
+
+🌱**[CELL THE UNIT OF LIFE ✘ JS SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTc3MTQ4NzA1NDMyNTY4MDAtNzc1NTk0OTcyNDA3MTU0NA)**
+
+🌱**[CELL BIOLOGY ✘  PIYUSH GUPTA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExMjg1NzUzNDgwNDIxMzc2LTExMjk3Nzc2NjU1MjkzOTg0)**
+
+🌱**[CELL BIOLOGY PG HINDI MEDIUM 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExODk0OTI3NjczOTY2ODQ4LTExOTA4OTU0NzExMzE4MjI0)**
+
+🌱**[CELL ✘ WA SIR 2025 ](https://t.me/{BOT_USERNM}?start=Z2V0LTEzNTM4MDk0OTA2NTU2NjA4LTEzNTQ4MTE0MjE4OTUwNDQ4)**
+
+
+
+🌱**[CELL CYCLE ANE DIVISION ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE4NjY1OTc4OTg5NzIzOTItMTg3MTYwNzU1NTE2OTMxMg)**
+
+''',
+          f'''
+
+
+🌱**[BIOMOLECULE AND ENZYME ✘ BAJRANG SHARMA SIR2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTc3NTY5NTE2NTUzMTA5MjgtNzc5MDAxNTM4NjIxMDYwMA)**
+
+
+🌱**[MINERAL NUTRITION ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE4NzI2MDk0ODY0MDg2OTYtMTg3NDYxMzM0ODg4NzQ2NA)**
+
+
+🌱**[PHOTOSYNTHESIS IN HIGHER PLANT ✘ BAIBHAV SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE4NzU2MTUyODAxMjY4NDgtMTg4MjYyODc5ODgwMjUzNg)**
+
+
+🌱**[RESPIRATION IN PLANTS ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTcxMjU3MzQ5NzQ0OTkwMDgtNzEzMDc0NDYzMDY5NTkyOA)**
+ 
+
+🌱**[PLANT GROWTH AND DEVELOPMENTS ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTcxMzE3NDY1NjE5MzUzMTItNzEzNjc1NjIxODEzMjIzMg)**
+
+
+🌱**[ANIMAL TISSUE ✘ MKS 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExNTQyMjQ3ODc3NzAzNjgwLTExNTU1MjcyOTgzODE1Njcy)**
+
+🌱**[ANIMAL TISSUE ✘ MKS SIR HINDI 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExOTA5OTU2NjQyNTU3NjA4LTExOTIyOTgxNzQ4NjY5NjAw)**
+
+🌱**[ANIMAL TISSUE ✘ DR PARVEZ BABAR SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyODA2Njg1MTAxODA2Mjg4LTEyODEzNjk4NjIwNDgxOTc2)**
+
+🌱 **[ANIMAL TISSUE ✘ DSP SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMjczNTg1MDU5MzU5MjMyLTEzMjgwNTk4NTc4MDM0OTIw)**
+
+
+🌱 **[FROG & COCKROCH ✘ LOKESH NAGAR SIR ](https://t.me/{BOT_USERNM}?start=Z2V0LTEzNTI1MDY5ODAwNDQ0NjE2LTEzNTI4MDc1NTk0MTYyNzY4)**
+
+
+🌱**[LOCOMOTION ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE3MjMzMjE3MzE3NDA0OC0xNzgzNDM3NjA2MTAzNTI)**
+ 
+
+🌱**[DIGESTION & ABSORPTION ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE3ODM0Mzc2MDYxMDM1Mi0xODYzNTkyMTA1MjU0MjQ)**
+
+
+🌱**[BREATHING & EXCHANGE ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE4NjM1OTIxMDUyNTQyNC0xODkzNjUwMDQyNDM1NzY)**
+
+
+🌱**[BLOOD AND CIRCULATION  ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTU5NDE0NTIyNDk1NDcxMi02MDUxNjY0Njg1ODc5MzY)**
+
+
+🌱**[EXCRETION ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTYwNTE2NjQ2ODU4NzkzNi02MTAxNzYxMjQ3ODQ4NTY)**
+
+🌱**[EXCRETION ✘ NKY SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE0OTY4ODUyNzE2Mzk2OTYtMTUwMTg5NDkyNzgzNjYxNg)**
+
+
+🌱**[CHEMICAL CONTROL ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTg2OTY3NjMxNTc4NTMxMi04NzQ2ODU5NzE5ODIyMzI)**
+
+
+🌱**[NEURAL CONTROL ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTg3NTY4NzkwMzIyMTYxNi04ODM3MDMzNTMxMzY2ODg)**     
+
+
+🌱**[HUMAN PHYSIOLOGY ✘ MKS 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExNTc0MzA5Njc3MzYzOTY4LTExNjA3MzczNDA4MjYzNjQw)**
+
+🌱 **[HUMAN PHYSIOLOGY LAST PART ✘ DSP SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMzQ0NzIyMTc3MzU1NDk2LTEzMzUwNzMzNzY0NzkxODAw)**
+
+🌱 **[HUMAN PHYSIOLOGY ✘ DSP SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMjgxNjAwNTA5Mjc0MzA0LTEzMzM0NzAyODY0OTYxNjU2)**
+
+🌱 **[HUMAN PHYSIOLOGY ✘ DR PARVEZ BABAR SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyODMxNzMzMzgyNzkwODg4LTEyODUwNzcwMDc2MzM5MTg0)**
+
+
+
+        
+        
+        ''',
+                
+        f'''  🔮 **CLASS 12 UNACADEMY UNACADEMY**
+
+🌱**[SEXUAL REPRODUCTION IN PLANTS ✘ AKS SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE1MDI4OTY4NTkwNzYwMDAtMTUxMTkxNDI0MDIzMDQ1Ng)**
+
+🌱**[SEXUAL REPRODUCTION IN FLOWERING PLANT ✘ BAIBHAV SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTg3NTM4NzMyMzg0OTgwMDgtODc2Mzg5MjU1MDg5MTg0OA)**
+
+🌱**[SEXUAL REPRODUCTION IN FLOWERING PLANTS ✘ IA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNTU4MjA2MTU0NDM5MDU2LTEyNTY2MjIxNjA0MzU0MTI4)**
+
+🌱**[SEXUAL REPRODUCTION IN FLOWERING PLANTS ✘ IA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzNTQ5MTE2MTUwMTg5ODMyLTEzNTU3MTMxNjAwMTA0OTA0)**
+
+🌱**[SEXUAL REPRODUCTION IN FLOWERING PLANTS ✘ BAJRANG SHARMA SIR 2025 ](https://t.me/{BOT_USERNM}?start=Z2V0LTEzNTI5MDc3NTI1NDAyMTUyLTEzNTM3MDkyOTc1MzE3MjI0)**
+
+🌱**[SEXUAL REPRODUCTION IN FLOWERING PLANTS ✘ AKS SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMDg3MjI1ODQ4ODMzODA4LTEzMDk2MjQzMjI5OTg4MjY0)**
+
+
+🌱**[HUMAN REPRODUCTION ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTI5OTE3NjY2ODA4MDA2MjQtMzAwMjc4NzkyNDQzMzg0OA)**
+
+🌱 **[HUMAN REPRODUCTION ✘ DR PARVEZ BABAR SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyODE0NzAwNTUxNzIxMzYwLTEyODMwNzMxNDUxNTUxNTA0)**
+
+
+🌱**[HUMAN HEALTH AND DISEASE ✘ AG SIR 2024 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTEwMDc2NDIyNDc0NDg0ODg4LTEwMDgyNDM0MDYxOTIxMTky)**
+
+🌱**[HUMAN HEALTH & DISEASE ✘ PIYUSH GUPTA 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExMjcwNzI0NTExODMwNjE2LTExMjg0NzUxNTQ5MTgxOTky)**
+
+🌱**[HUMAN HEALTH & DISEASE PG HINDI MEDIUM 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExODc5ODk4NzA1Mzc2MDg4LTExODkzOTI1NzQyNzI3NDY0)**
+''',
+          f'''
+
+
+🌱**[GENETICS LEC 01 - 27 ✘ DEVI SINGH SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE1MTI5MTYxNzE0Njk4NDAtMTUzODk2NjM4MzY5MzgyNA)**
+
+🌱**[GENETICS LEC 28 - LAST ✘ DEVI SINGH SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE1Mzk5NjgzMTQ5MzMyMDgtMTU2NTAxNjU5NTkxNzgwOA)**
+
+🌱**[GENETICS ✘ DEVI SINGH 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExNTI2MjE2OTc3ODczNTM2LTExNTQwMjQ0MDE1MjI0OTEy)**
+
+🌱**[GENETICS ✘ DEVI SINGH HINDI 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTExNjczNTAwODcwMDYyOTg0LTExNjg3NTI3OTA3NDE0MzYw)**
+
+🌱**[GENETICS ✘ AKS SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMjU5NTU4MDIyMDA3ODU2LTEzMjcyNTgzMTI4MTE5ODQ4)**
+
+
+🌱**[EVOLUTION ✘ NKY SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE1NjcwMjA0NTgzOTY1NzYtMTU4MzA1MTM1ODIyNjcyMA)**      
+
+🌱**[EVOLUTION ✘ AG SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTYzNjYyNzEwOTUwNDU5MzYtNjM3NjI5MDQwNzQzOTc3Ng)**
+
+🌱**[EVOLUTION ✘ NKY SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNjE4MzIyMDI4ODAyMDk2LTEyNjMwMzQ1MjAzNjc0NzA0)**
+
+🌱 **[EVOLUTION ✘ DSP SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEzMzM1NzA0Nzk2MjAxMDQwLTEzMzQzNzIwMjQ2MTE2MTEy)**
+
+
+🌱**[ORGANIMS & POPULATION ✘ BAIBHAV SIR 2024 ](https://t.me/{BOT_USERNM}?start=Z2V0LTE3NjY0MDQ3NzUwMzM5OTItMTc3NDQyMDIyNDk0OTA2NA)**
+
+🌱**[ECOSYSTEM ✘ BAIBHAV SIR  2024](https://t.me/{BOT_USERNM}?start=Z2V0LTE3NzU0MjIxNTYxODg0NDgtMTc3NjQyNDA4NzQyNzgzMg)**
+      
+🌱**[ECOLOGY ✘ IA SIR 2024](https://t.me/{BOT_USERNM}?start=Z2V0LTM4MjczNzczMzQ0NDY4OC00MzQ4MzgxNTc4OTI2NTY)**    
+
+🌱**[ECOLOGY ✘ IA SIR 2025](https://t.me/{BOT_USERNM}?start=Z2V0LTEyNTgxMjUwNTcyOTQ0ODg4LTEyNTk4MjgzNDA0MDE0NDE2)**
+
+
+
+        
+        ''',
+              
+        
+    ]
+    
+    # Send each piece of information as a separate message
+    for info in biu_info:
+        await query.message.reply_text(info, disable_web_page_preview=True ,parse_mode=ParseMode.MARKDOWN)
+        
+        # Add a short delay between messages (optional)
+        await asyncio.sleep(0.5)
+
+        await query.answer("UNACADEMY BIOLOGY LECTURES SENT SUCESSFULLY✅", show_alert=True)
+    
+        parse_mode=ParseMode.MARKDOWN,
