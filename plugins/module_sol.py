@@ -47180,14 +47180,34 @@ lol_data = [
                 "link" : "https://allenplus.allen.ac.in/api/v1/src/player/576108528?h=5b19aa6ef9"
              },            
              
-
-
-
-
-
-
-
-
-
-
 ]
+
+btn = [
+        [
+            InlineKeyboardButton("✨ MODULE SOLUTION GROUP ", url= f"{SOL_LINK}")
+        ]
+    ]
+
+
+@Bot.on_message(filters.command("solution", prefixes="/"), group=72)
+async def get_link(bot: Bot, message: Message):
+    text = message.text.split(' ', 1)
+    if message.chat.id == -1002072923049:
+        if len(text) > 1:
+            code = text[1]
+            for item in lol_data:
+                if item['name'] == code:
+                    link_text = f"<a href='{item['link']}'>{code}</a>"
+                    await message.reply(f'''
+<b>Question Requested</b>: {code}
+<b>Solution Link</b>: {link_text}                            
+''', parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+                    return
+            await message.reply(f"Code {code} Not found.\nMake sure you are entering the correct code.\n Make sure the code is in capital.")
+        else:
+            await message.reply("Please provide a question code to get the solution link.")
+    else:
+        await message.reply_text(text="This command is only available in the specified chat", reply_markup=InlineKeyboardMarkup(btn))
+
+
+
