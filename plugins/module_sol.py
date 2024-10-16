@@ -51519,7 +51519,6 @@ btn = [
 @Bot.on_message(filters.command("solution", prefixes="/"), group=72)
 async def get_link(bot: Bot, message: Message):
     text = message.text.split(' ', 1)
-    if message.chat.id == -1002072923049:
         if len(text) > 1:
             code = text[1]
             for item in lol_data:
