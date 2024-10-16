@@ -51532,7 +51532,7 @@ async def get_link(bot: Bot, message: Message):
                 
                 # Send a message with the solution link
                 await message.reply(f'''
-<b>📂 Question Requested</b>: `{code}`
+<b>📂 Question Requested</b>: <code>{code}</code>`
 
 <b>🍃 Solution Link</b>: {link_text}                            
                 ''', parse_mode=ParseMode.HTML, disable_web_page_preview=True)
@@ -51543,4 +51543,4 @@ async def get_link(bot: Bot, message: Message):
     
     # If no code was provided after the command
     else:
-        await message.reply("Please provide a question code to get the solution link. \n\n Usage: `/solution SC0268`")
+        await message.reply("Please provide a question code to get the solution link. \n\n Usage: <code>/solution SC0268 </code>")
