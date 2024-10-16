@@ -37,6 +37,13 @@ async def start_command(client: Client, message: Message):
             pass
     text = message.text
     if len(text)>7:
+        on_cooldown, remaining_time = await is_user_on_cooldown(user_id)
+        if on_cooldown:
+            await message.reply(f"You're using commands too fast! Please wait {int(remaining_time)} seconds before trying again.")
+            return  # Exit if on cooldown
+
+    # Update cooldown timestamp after successfully starting command
+    await update_cooldown(user_id)
         try:
             base64_string = text.split(" ", 1)[1]
         except:
