@@ -51516,42 +51516,30 @@ btn = [
     ]
 
 
-@Bot.on_message(filters.command("solution", prefixes="/"), group=72)
+@Bot.on_message(filters.command("solution", prefixes="/"))
 async def get_link(bot: Bot, message: Message):
-    # Check if the command is run in the correct group (group id = 72)
-    if message.chat.id == 72:
-        text = message.text.split(' ', 1)
+    # Split the message to check if a code is provided
+    text = message.text.split(' ', 1)
+    
+    # Check if a code was provided after the command
+    if len(text) > 1:
+        code = text[1].strip().upper()  # Strip and convert to uppercase to match your data
         
-        # Check if a code was provided after the command
-        if len(text) > 1:
-            code = text[1].strip().upper()  # Strip and convert to uppercase to match your data
-            
-            # Search for the code in the lol_data list
-            for item in lol_data:
-                if item['name'] == code:
-                    link_text = f"<a href='{item['link']}'>{code}</a>"
-                    
-                    # Send a message with the solution link
-                    await message.reply(f'''
+        # Search for the code in the lol_data list
+        for item in lol_data:
+            if item['name'] == code:
+                link_text = f"<a href='{item['link']}'>{code}</a>"
+                
+                # Send a message with the solution link
+                await message.reply(f'''
 <b>Question Requested</b>: {code}
 <b>Solution Link</b>: {link_text}                            
-                    ''', parse_mode=ParseMode.HTML, disable_web_page_preview=True)
-                    return
+                ''', parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+                return
 
-            # If the code was not found
-            await message.reply(f"Code {code} not found.\nMake sure you are entering the correct code in uppercase.")
-        
-        # If no code was provided after the command
-        else:
-            await message.reply("Please provide a question code to get the solution link.")
+        # If the code was not found
+        await message.reply(f"Code {code} not found.\nMake sure you are entering the correct code in uppercase.")
     
-    # If the command is not run in the specified group
+    # If no code was provided after the command
     else:
-        # Create an example inline button (if needed)
-        btn = [[InlineKeyboardButton("Go to Group", url="https://t.me/yourgroup")]]
-        await message.reply_text(
-            text="This command is only available in the specified chat.",
-            reply_markup=InlineKeyboardMarkup(btn)
-        )
-
-
+        await message.reply("Please provide a question code to get the solution link.")
