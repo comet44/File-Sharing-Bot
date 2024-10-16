@@ -40,7 +40,7 @@ async def start_command(client: Client, message: Message):
     if len(text)>7:
         on_cooldown, remaining_time = await is_user_on_cooldown(user_id)
         if on_cooldown:
-            await message.reply(f"You're using commands too fast! Please wait {int(remaining_time)} seconds before trying again.")
+            await message.reply(f"<b>⚠️ You're using commands too fast!  Please wait <code> {int(remaining_time)} seconds </code>  before trying again.</b>")
             return  # Exit if on cooldown
         await update_cooldown(user_id)
         try:
