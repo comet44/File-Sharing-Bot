@@ -1,4 +1,4 @@
-#(©)CodeXBotz
+        #(©)CodeXBotz
 
 
 
@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 from bot import Bot
 from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT,BOT_USERNM
 from helper_func import subscribed, encode, decode, get_messages
-from database.database import add_user, del_user, full_userbase, present_user
+from database.database import add_user, del_user, full_userbase, present_user, update_cooldown, get_cooldown, is_user_on_cooldown
 
 PICS = "https://te.legra.ph/file/78a556d78bd5bc7daafa4.jpg"
 
@@ -41,9 +41,7 @@ async def start_command(client: Client, message: Message):
         if on_cooldown:
             await message.reply(f"You're using commands too fast! Please wait {int(remaining_time)} seconds before trying again.")
             return  # Exit if on cooldown
-
-    # Update cooldown timestamp after successfully starting command
-    await update_cooldown(user_id)
+        await update_cooldown(user_id)
         try:
             base64_string = text.split(" ", 1)[1]
         except:
