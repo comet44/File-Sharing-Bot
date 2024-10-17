@@ -16,7 +16,7 @@ async def stats(bot: Bot, message: Message):
     await message.reply(BOT_STATS_TEXT.format(uptime=time))
 
 
-@Bot.on_message(filters.private & filters.incoming & ~filters.command(['lectures','solution','help','notes','ask','binging','chat','test','stream','elp','unateachers','unabatches']))
+@Bot.on_message(filters.private & filters.incoming & ~filters.command(['lectures','solution','help','notes','ask','binging','chat','test','stream','elp','unateachers','unabatches','join']))
 async def useless(_,message: Message):
     if ERROR_TEXT:
         await message.reply(ERROR_TEXT)
