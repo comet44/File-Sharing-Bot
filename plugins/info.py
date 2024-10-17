@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from datetime import timedelta
 
 from bot import Bot  # Ensure to replace this with your actual bot import
-
+from config import ADMINS, BOT_USERNM
 # Define a target to ping (e.g., Google DNS)
 PING_TARGET = "8.8.8.8"  # Google's public DNS server
 
@@ -103,7 +103,7 @@ def get_system_stats():
     return stats_message
 
 # Command to fetch and send server stats
-@Bot.on_message(filters.command("info"), group=7664)
+@Bot.on_message(filters.command("info") & filters.user(ADMINS), group=7664)
 async def send_server_info(client: Bot, message: Message):
     # Get the system stats
     stats_message = get_system_stats()
