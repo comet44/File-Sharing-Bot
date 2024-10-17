@@ -14,7 +14,7 @@ from config import OWNER_ID, BOT_USERNM
 
 
 
-@Bot.on_message(filters.command('test') & filters.group, group=434)
+@Bot.on_message(filters.command('test') , group=434)
 async def help(bot: Bot, message: Message):
  test_info = [] 
  
