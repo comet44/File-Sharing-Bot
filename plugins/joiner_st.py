@@ -12,7 +12,7 @@ GROUPS = {
 }
 
 # Manual command to check admin permissions
-@Bot.on_message(filters.command("joiner_start"))
+@Bot.on_message(filters.command("joiner_start") ,group = 6672)
 async def joiner_start_command(bot: Bot, message: Message):
     # Define the function inside the command
     async def check_admin_permissions():
