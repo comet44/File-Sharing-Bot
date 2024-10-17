@@ -19,9 +19,12 @@ from pyrogram.types.messages_and_media import message
 
 
 GROUPS = {
-    "MP 1 HINDI": -1002175178138,  # Replace with your actual group IDs
+    "MP 1 HINDI": -1002175178138, 
+    "MP 1 ENGLISH" : -1002181583963,
+    "MP 3 ENGLISH": -1002049819461,  # Replace with your actual group IDs
     "KUNHARI CRASH": -1002007781807,  # Replace with your actual group IDs
-    "KOTA CQ 1": -1002202198119,  # Replace with your actual group IDs
+    "KOTA CQ 1": -1002202198119, 
+    "DREAM 2025": -1002159837565,       
 }
 
 
