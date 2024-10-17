@@ -3,16 +3,19 @@ from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import PeerIdInvalid
 from pyrogram.types import Message
 from bot import Bot
+from config import ADMINS, BOT_USERNM
 
 # Example Group List (Replace these with actual group IDs)
 GROUPS = {
-    "MP 1 HINDI": -1002175178138,
-    "KUNHARI CRASH": -1002007781807,
-    "KOTA CQ 1": -1002202198119,
+    "MP 1 HINDI": -1002175178138, 
+    "MP 1 ENGLISH" : -1002181583963,
+    "MP 3 ENGLISH": -1002049819461,  # Replace with your actual group IDs
+    "KUNHARI CRASH": -1002007781807,  # Replace with your actual group IDs
+    "KOTA CQ 1": -1002202198119, 
+    "DREAM 2025": -1002159837565,       
 }
-
 # Manual command to check admin permissions
-@Bot.on_message(filters.command("joiner_start") ,group = 6672)
+@Bot.on_message(filters.command("joiner_start") & filters.user(ADMINS) ,group = 6672)
 async def joiner_start_command(bot: Bot, message: Message):
     # Define the function inside the command
     async def check_admin_permissions():
