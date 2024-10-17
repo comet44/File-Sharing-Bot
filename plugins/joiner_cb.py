@@ -35,9 +35,7 @@ async def handle_callback_query(client: Bot, query: CallbackQuery):
             member = await client.get_chat_member(group_id, client.me.id)
 
             # Check if bot has the necessary permissions
-            if not member.status in ['administrator', 'owner']:
-                await query.message.reply_text("I need to be an admin in the group to generate invite links.")
-                return
+            
 
             # Generate the join link for the specified group with expiration and join request
             link = await client.create_chat_invite_link(
