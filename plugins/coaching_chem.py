@@ -15,7 +15,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "ch_chem":
         await query.message.edit_text(
-            text = f''' 🌀 **CLICK ON WHATEVER YOU WANT**
+            text = f''' 🌀 >**CLICK ON WHATEVER YOU WANT**
 📍 **SUBJECT **: `CHEMISTRY `            
             ''',
             disable_web_page_preview = True,
@@ -31,6 +31,9 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                    [
                      InlineKeyboardButton(text="PHYSICSWALLAH", callback_data="pw_chem"),
                      InlineKeyboardButton(text="ANAND MANI", callback_data="ny_chem"),
+                   ],
+                   [
+                     InlineKeyboardButton(text="ADDA 24x7", callback_data="adda_chem"),
                    ], 
                    [
                     InlineKeyboardButton(text="👨🏻‍💻 BACK ", callback_data="ch_cb")
